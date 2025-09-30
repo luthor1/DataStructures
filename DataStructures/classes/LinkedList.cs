@@ -6,32 +6,32 @@ using System.Threading.Tasks;
 
 namespace DataStructures.classes
 {
-    internal class LinkedList
+    internal class LinkedListe<T>
     {
-        private Node? head;
-        private Node? tail;
+        private Node<T>? head;
+        private Node<T>? tail;
         private int size;
         public int Size { get { return size; } }
-        public Node? Head { get { return head; } }
-        public Node? Tail { get { return tail; } }
+        public Node<T>? Head { get { return head; } }
+        public Node<T>? Tail { get { return tail; } }
 
-        public LinkedList()
+        public LinkedListe()
         {
             this.head = null;
             this.tail = null;
             this.size = 0;
         }
-        public LinkedList(int data)
+        public LinkedListe(T data)
         {
-            Node newNode = new Node(data);
+            Node<T> newNode = new Node<T>(data);
             this.head = newNode;
             this.tail = newNode;
             this.size = 1;
         }
 
-        public void Append(int data)
+        public void Append(T data)
         {
-            Node newNode = new Node(data);
+            Node<T> newNode = new Node<T>(data);
             if(this.size == 0)
             {
                 this.head = newNode;
@@ -47,7 +47,7 @@ namespace DataStructures.classes
 
         public void Print()
         {
-            Node? temp = this.head;
+            Node<T>? temp = this.head;
 
             while(temp != null)
             {
@@ -57,9 +57,9 @@ namespace DataStructures.classes
             Console.WriteLine("--------------");
         }
 
-        public void AddFirst(int data)
+        public void AddFirst(T data)
         {
-            Node newNode = new Node(data);
+            Node<T> newNode = new Node<T>(data);
             if(this.size == 0)
             {
                 this.head = newNode;
@@ -73,14 +73,14 @@ namespace DataStructures.classes
             this.size++;
         }
 
-        public void Insert(int index, int data)
+        public void Insert(int index,T data)
         {
             if(index <= 0) AddFirst(data);
 
             else if(index >= 0 && index < this.size)
             {
-                Node newNode = new Node(data);
-                Node temp = GetNode(index - 1);
+                Node<T> newNode = new Node<T>(data);
+                Node<T> temp = GetNode(index - 1);
                 newNode.next = temp.next;
                 temp.next = newNode;
                 this.size++;
@@ -93,11 +93,11 @@ namespace DataStructures.classes
            
         }
 
-        public Node? RemoveLast()
+        public Node<T>? RemoveLast()
         {
             if(this.size == 0) return null;
-            Node? temp = this.head;
-            Node? last = this.tail;
+            Node<T>? temp = this.head;
+            Node<T>? last = this.tail;
             while(temp!.next != null)
             {
                 last = temp;
@@ -114,13 +114,13 @@ namespace DataStructures.classes
             return temp;
         }
 
-        public Node? RemoveFirst()
+        public Node<T>? RemoveFirst()
         {
             if(this.head ==  null) return null;
 
             else if(this.size == 1)
             {
-                Node? ex = this.head;
+                Node<T>? ex = this.head;
                 this.head = null;
                 this.tail = null;
                 this.size--;
@@ -128,7 +128,7 @@ namespace DataStructures.classes
             }
             else
             {
-                Node ex = this.head;
+                Node<T> ex = this.head;
                 this.head = this.head.next;
                 ex.next = null;
                 this.size--;
@@ -136,14 +136,14 @@ namespace DataStructures.classes
             }
         }
 
-        public Node? RemoveIndex(int index)
+        public Node<T>? RemoveIndex(int index)
         {
             if (index <= 0) return RemoveFirst();
             else if(index > 0 && index < this.size)
             {
                 // Get Node oluşturulduktan sonra doldurulacak
-                Node temp = GetNode(index - 1);
-                Node ex = temp.next!;
+                Node<T> temp = GetNode(index - 1);
+                Node<T> ex = temp.next!;
                 temp.next = ex.next;
                 ex.next = null;
                 this.size--;
@@ -152,11 +152,11 @@ namespace DataStructures.classes
             return null;
         }
 
-        public Node GetNode(int index)
+        public Node<T> GetNode(int index)
         {
             if(index >= 0 && index < this.size)
             {
-                Node? temp = this.head;
+                Node<T>? temp = this.head;
                 for(int i = 0; i < index; i++)
                 {
                     temp = temp!.next;
@@ -166,9 +166,9 @@ namespace DataStructures.classes
             return null!;
         }
 
-        public void SetNode(int index, int data)
+        public void SetNode(int index,T data)
         {
-            Node temp = GetNode(index);
+            Node<T> temp = GetNode(index);
             if(temp != null)
             {
                 temp.data = data;

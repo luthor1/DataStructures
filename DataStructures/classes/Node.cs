@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace DataStructures.classes
 {
-    internal class Node
+    internal class Node<T>
     {
-        public int data { get; set; }
-        public Node? next { get; set; }
+        public T? data { get; set; }
+        public Node<T>? next { get; set; }
 
-        public Node (int data)
+        public Node (T data)
         {
             this.data = data;
             this.next = null;
         }
-    }
+    }   
 }
