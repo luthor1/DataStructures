@@ -2,6 +2,7 @@
 
 Veri yapıları kütüphanesi
 
-#LinkedList
+*LinkedList
+*DoublyLinkedList
 
 Her şey generic
