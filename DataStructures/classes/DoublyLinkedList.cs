@@ -26,5 +26,33 @@ namespace DataStructures.classes
             this.tail = newNode;
             this.size = 1;
         }
+
+        public void Append(T data)
+        {
+            DoublyNode<T> newNode = new DoublyNode<T>(data);
+            if (this.size == 0)
+            {
+                this.head = newNode;
+                this.tail = newNode;
+            }
+            else
+            {
+                this.tail!.next = newNode;
+                newNode.prev = this.tail;
+                this.tail = newNode;
+            }
+            this.size++;
+        }
+
+        public void Print()
+        {
+            DoublyNode<T>? temp = this.head;
+            while (temp != null)
+            {
+                Console.WriteLine(temp.data);
+                temp = temp.next;
+            }
+            Console.WriteLine("--------------");
+        }
     }
 }

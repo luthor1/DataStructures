@@ -6,7 +6,7 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
- 
+
             #region LinkedList
             //// Liste Olusturuldu Append ile sona eleman eklendi
             //Console.WriteLine("Liste olusturuldu");
@@ -60,16 +60,30 @@ namespace DataStructures
             //Console.WriteLine("Size = " + myList.Size);
             //Console.WriteLine("--------------");
 
+
+
+
+            //var mylist = new LinkedListe<object>();
+            //mylist.Append("Ali");
+            //mylist.Append("Veli");
+            //mylist.Append("Ayse");
+            //mylist.Append(12);
+            //int a = (int)mylist.GetNode(3).data!;
+            //mylist.Print();
+            //Console.WriteLine(a * 13);
+
             #endregion
 
-            var mylist = new LinkedListe<object>();
-            mylist.Append("Ali");
-            mylist.Append("Veli");
-            mylist.Append("Ayse");
-            mylist.Append(12);
-            int a = (int)mylist.GetNode(3).data!;
-            mylist.Print();
-            Console.WriteLine(a*13);
+            #region DoublyLinkedList
+
+            var myDoublyList = new DoublyLinkedList<int>(10);
+            myDoublyList.Append(20);
+            myDoublyList.Append(30);
+            myDoublyList.Append(40);
+            myDoublyList.Print();
+
+            #endregion
+
 
 
 
