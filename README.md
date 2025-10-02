@@ -1,8 +1,9 @@
 ﻿# DataStructures
 
-Veri yapıları kütüphanesi
+## Veri yapıları kütüphanesi
 
-*LinkedList
-*DoublyLinkedList
+- **LinkedList**
+- **DoublyLinkedList** 
 
+### İçindekiler ve özellikler:
 Her şey generic
