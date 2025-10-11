@@ -54,5 +54,24 @@ namespace DataStructures.classes
             }
             Console.WriteLine("--------------");
         }
+        
+        public void AddFirst(T data)
+        {
+            DoublyNode<T> newNode = new DoublyNode<T>(data);
+            if (this.size == 0)
+            {
+                this.head = newNode;
+                this.tail = newNode;
+            }
+            else
+            {
+                newNode.next = this.head;
+                this.head!.prev = newNode;
+                this.head = newNode;
+            }
+            this.size++;
+        }
+
+
     }
 }

@@ -80,6 +80,7 @@ namespace DataStructures
             myDoublyList.Append(20);
             myDoublyList.Append(30);
             myDoublyList.Append(40);
+            myDoublyList.AddFirst(99);
             myDoublyList.Print();
 
             #endregion
