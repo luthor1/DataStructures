@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataStructures.classes
 {
-    internal class LinkedListe<T>
+    internal class LinkedListe<T> where T : IComparable<T>
     {
         private Node<T>? head;
         private Node<T>? tail;
@@ -172,6 +172,63 @@ namespace DataStructures.classes
             if(temp != null)
             {
                 temp.data = data;
+            }
+        }
+
+        public void Clear()
+        {
+            this.head = null;
+            this.tail = null;
+            this.size = 0;
+        }
+
+        public void Reverse()
+        {
+            Node<T>? prev = null;
+            Node<T>? current = this.head;
+            Node<T>? next = null;
+            this.tail = this.head;
+            while(current != null)
+            {
+                next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+            }
+            this.head = prev;
+        }
+
+        public void InsertArraySorted(T[] values)
+        {
+            foreach (T val in values)
+            {
+                Node<T> newNode = new Node<T>(val);
+
+                // 1. DURUM: Liste boşsa VEYA Head'deki data, gelen datadan büyük veya eşitse
+                // (head.Data >= val) mantığı CompareTo ile yapılır:
+                // Sonuç >= 0 ise head daha büyük demektir.
+                if (head == null || head.data?.CompareTo(val) >= 0)
+                {
+                    newNode.next = head;
+                    head = newNode;
+                }
+                else
+                {
+                    // 2. DURUM: Araya veya sona ekleme
+                    Node<T> current = head;
+
+                    // Sonraki düğüm var olduğu sürece VE
+                    // sonraki düğümün verisi bizim verimizden KÜÇÜK olduğu sürece ilerle.
+                    // (current.Next.Data < val) => CompareTo < 0
+                    while (current.next != null && current.next.data?.CompareTo(val) < 0)
+                    {
+                        current = current.next;
+                    }
+
+                    // Doğru yeri bulduk (current -> newNode -> current.Next)
+                    newNode.next = current.next;
+                    current.next = newNode;
+                }
             }
         }
 
